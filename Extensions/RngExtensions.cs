@@ -1,7 +1,7 @@
 ﻿using System;
 using Godot;
 
-namespace Godot.Utilities
+namespace Godot.Extensions
 {
     /// <summary>
     /// Provides extensions methods for the <see cref="RandomNumberGenerator"/> class.
