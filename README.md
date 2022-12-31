@@ -1,2 +1,2 @@
-# Godot C# Extensions
-Contains many convienence extention methods and utilities for Godot (C#).
+# Godot Common C#
+Contains many convienence extention methods, nodes, and utilities for Godot (C#).
