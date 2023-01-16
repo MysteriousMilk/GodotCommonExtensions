@@ -15,8 +15,6 @@ namespace Godot.Common.Nodes
 
             if (NodePath != null)
                 Node = GetNode<T>(NodePath);
-            else
-                Node = GameManager.Instance.FindFirstDescendantByType<T>();
         }
     }
 }

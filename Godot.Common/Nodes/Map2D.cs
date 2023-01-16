@@ -103,7 +103,7 @@ namespace Godot.Common.Nodes
             return node;
         }
 
-        public Vector2 GetRandomPlayerSpawnPoint()
+        public Vector2 GetRandomPlayerSpawnPoint(RandomNumberGenerator rng)
         {
             Vector2 spawnPoint = Vector2.Zero;
 
@@ -113,7 +113,7 @@ namespace Godot.Common.Nodes
                 var spawnPoints = this.FindDescendantNodesByType<PlayerSpawnPoint>().ToArray();
                 if (spawnPoints.Length > 0)
                 {
-                    int randomIndex = GameManager.Instance.GlobalRNG.RandiRange(0, spawnPoints.Length - 1);
+                    int randomIndex = rng.RandiRange(0, spawnPoints.Length - 1);
                     spawnPoint = spawnPoints[randomIndex].GlobalPosition;
                 }
             }
