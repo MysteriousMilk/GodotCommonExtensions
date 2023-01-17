@@ -1,5 +1,4 @@
 ﻿using Godot;
-using Godot.Logging;
 
 namespace GodotUtilities
 {
@@ -17,17 +16,17 @@ namespace GodotUtilities
         /// <param name="name">The name of the <see cref="Resource"/> within the <see cref="ResourcePreloader"/>.</param>
         /// <typeparam name="T"></typeparam>
         /// <returns>An instance of the requested <see cref="PackedScene"/> or null if the resource is not found (or invalid).</returns>
-        public static T InstanceSceneOrNull<T>(this ResourcePreloader preloader, string name) where T : Node
+        public static T InstantiateSceneOrNull<T>(this ResourcePreloader preloader, string name) where T : Node
         {
             if (!preloader.HasResource(name))
             {
-                GodotLogger.LogError("Preloader did not have a resource with name " + name);
+                GD.PrintErr("Preloader did not have a resource with name " + name);
                 return null;
             }
 
             if (!(preloader.GetResource(name) is PackedScene resource))
             {
-                GodotLogger.LogError("Resource with name " + name + " was not a " + nameof(PackedScene));
+                GD.PrintErr("Resource with name " + name + " was not a " + nameof(PackedScene));
                 return null;
             }
 
@@ -40,9 +39,9 @@ namespace GodotUtilities
         /// <typeparam name="T"></typeparam>
         /// <param name="preloader">The <see cref="ResourcePreloader"/> which contains pre-loaded <see cref="PackedScene"/>s.</param>
         /// <returns>An instance of the requested <see cref="PackedScene"/> or null if the resource is not found (or invalid).</returns>
-        public static T InstanceSceneOrNull<T>(this ResourcePreloader preloader) where T : Node
+        public static T InstantiateSceneOrNull<T>(this ResourcePreloader preloader) where T : Node
         {
-            return preloader.InstanceSceneOrNull<T>(typeof(T).Name);
+            return preloader.InstantiateSceneOrNull<T>(typeof(T).Name);
         }
     }
 }
