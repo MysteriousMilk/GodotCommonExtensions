@@ -1,6 +1,6 @@
 ﻿using Godot;
 
-namespace GodotUtilities
+namespace Godot.Common.Extensions
 {
     /// <summary>
     /// Extension methods for the Resource Pre-Loader.
