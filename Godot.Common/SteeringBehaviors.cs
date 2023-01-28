@@ -5,7 +5,7 @@
         public static Vector2 Follow(CharacterBody2D entity, Vector2 targetPos, float maxSpeed)
         {
             Vector2 desiredVel = (targetPos - entity.GlobalPosition).Normalized() * maxSpeed;
-            Vector2 steeringVec = (desiredVel - entity.Velocity).Normalized();
+            Vector2 steeringVec = (desiredVel - entity.Velocity);
 
             return steeringVec;
         }
@@ -20,7 +20,7 @@
             else
                 desiredVel = desiredVel.Normalized() * maxSpeed;
 
-            Vector2 steeringVec = (desiredVel - entity.Velocity).Normalized();
+            Vector2 steeringVec = (desiredVel - entity.Velocity);
             return steeringVec;
         }
     }
