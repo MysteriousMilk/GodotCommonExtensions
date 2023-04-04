@@ -25,12 +25,12 @@ namespace Godot.Common.Extensions
 
         public static void FlipVertical(this Node2D n2d)
         {
-            n2d.Scale = new Vector2(n2d.Scale.x, n2d.Scale.y * -1f);
+            n2d.Scale = new Vector2(n2d.Scale.X, n2d.Scale.Y * -1f);
         }
 
         public static void FlipHorizontal(this Node2D n2d)
         {
-            n2d.Scale = new Vector2(n2d.Scale.x * -1f, n2d.Scale.y);
+            n2d.Scale = new Vector2(n2d.Scale.X * -1f, n2d.Scale.Y);
         }
 
         /// <summary>

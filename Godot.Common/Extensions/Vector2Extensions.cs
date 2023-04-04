@@ -12,8 +12,8 @@
         public static Vector2 Extend(this Vector2 vec, float angle, float amount)
         {
             return new Vector2(
-                vec.x + amount * Mathf.Cos(angle),
-                vec.y + amount * Mathf.Sin(angle));
+                vec.X + amount * Mathf.Cos(angle),
+                vec.Y + amount * Mathf.Sin(angle));
         }
     }
 }
