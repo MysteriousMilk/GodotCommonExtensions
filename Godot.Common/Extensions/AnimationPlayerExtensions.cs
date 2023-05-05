@@ -1,4 +1,6 @@
-﻿namespace Godot.Common.Extensions
+﻿using System;
+
+namespace Godot.Common.Extensions
 {
     public static class AnimationPlayerExtensions
     {
@@ -19,6 +21,49 @@
         public static void PlayDeferred(this AnimationPlayer animationPlayer, StringName name = null, double customBlend = -1.0, float customSpeed = 1f, bool fromEnd = false)
         {
             animationPlayer.CallDeferred(AnimationPlayer.MethodName.Play, name, customBlend, customSpeed, fromEnd);
+        }
+ 
+        public static void Play(this AnimationPlayer animationPlayer, StringName name = null, Action finishedCallback = null, double customBlend = -1.0, float customSpeed = 1f, bool fromEnd = false)
+        {
+            var anim = animationPlayer.GetAnimation(name);
+
+            if (finishedCallback != null)
+            {
+                var timer = animationPlayer.GetTree().CreateTimer(anim.Length);
+                timer.Connect(SceneTreeTimer.SignalName.Timeout, Callable.From(finishedCallback));
+            }
+
+            animationPlayer.Play(name, customBlend, customSpeed, fromEnd);
+        }
+
+        public static void PlayAndReset(this AnimationPlayer animationPlayer, StringName name = null, Action finishedCallback = null, double customBlend = -1.0, float customSpeed = 1f, bool fromEnd = false)
+        {
+            animationPlayer.Play(name, customBlend, customSpeed, fromEnd);
+
+            if (animationPlayer.HasAnimation("RESET"))
+                animationPlayer.Queue("RESET");
+        }
+
+
+        public static void Queue(this AnimationPlayer animationPlayer, StringName name = null, Action finishedCallback = null)
+        {
+            var anim = animationPlayer.GetAnimation(name);
+
+            if (finishedCallback != null)
+            {
+                var timer = animationPlayer.GetTree().CreateTimer(anim.Length);
+                timer.Connect(SceneTreeTimer.SignalName.Timeout, Callable.From(finishedCallback));
+            }
+
+            animationPlayer.Queue(name);
+        }
+
+        public static void QueueAndReset(this AnimationPlayer animationPlayer, StringName name = null)
+        {
+            animationPlayer.Queue(name);
+
+            if (animationPlayer.HasAnimation("RESET"))
+                animationPlayer.Queue("RESET");
         }
     }
 }
