@@ -1,2 +1,4 @@
-# Godot Common C#
-Contains many convienence extention methods, nodes, and utilities for Godot (C#).
+# Godot.Common.Extensions
+[![NuGet version (Godot.Composition)](https://img.shields.io/badge/nuget-v1.0-blue?style=flat-square)](https://www.nuget.org/packages/Godot.Common.Extensions/1.0.0)
+
+Contains many convienence extention methods, nodes, and utilities for Godot 4 (C#).
