@@ -23,11 +23,36 @@ public static class Node2DExtensions
         parent.AddChild(node);
     }
 
+    /// <summary>
+    /// Gets the material assigned to this <see cref="Node2D"/>'s parent.
+    /// </summary>
+    /// <param name="node">Node to get the parent material for.</param>
+    /// <returns>The node's parent's material. Returns null if node has no parent or the material is null.</returns>
+    public static Material GetParentMaterial(this Node2D node)
+    {
+        if (node == null)
+            return null;
+
+        var parent = node.GetParent() as Node2D;
+        if (parent == null)
+            return null;
+
+        return parent.Material;
+    }
+
+    /// <summary>
+    /// Flips a <see cref="Node2D"/> vertically. Should not be used on physics nodes.
+    /// </summary>
+    /// <param name="n2d">The node to flip.</param>
     public static void FlipVertical(this Node2D n2d)
     {
         n2d.Scale = new Vector2(n2d.Scale.X, n2d.Scale.Y * -1f);
     }
 
+    /// <summary>
+    /// Filps a <see cref="Node2D"/> vertically. Should not be used on physics nodes.
+    /// </summary>
+    /// <param name="n2d">The node to flip.</param>
     public static void FlipHorizontal(this Node2D n2d)
     {
         n2d.Scale = new Vector2(n2d.Scale.X * -1f, n2d.Scale.Y);

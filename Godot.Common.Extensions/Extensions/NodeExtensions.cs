@@ -317,4 +317,26 @@ public static class NodeExtensions
         else
             return default;
     }
+
+    /// <summary>
+    /// Helper function that will "Enable" a node by turning on the Process, PhysicsProcess, and Input routines.
+    /// </summary>
+    /// <param name="node">The node to "enable".</param>
+    public static void EnableNode(this Node node)
+    {
+        node.SetProcess(true);
+        node.SetPhysicsProcess(true);
+        node.SetProcessInput(true);
+    }
+
+    /// <summary>
+    /// Helper function that will "Disable" a node by turning off the Process, PhysicsProcess, and Input routines.
+    /// </summary>
+    /// <param name="node">The node to "disable".</param>
+    public static void DisableNode(this Node node)
+    {
+        node.SetProcess(false);
+        node.SetPhysicsProcess(false);
+        node.SetProcessInput(false);
+    }
 }
